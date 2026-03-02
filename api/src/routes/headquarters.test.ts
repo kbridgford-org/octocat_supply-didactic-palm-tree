@@ -62,6 +62,8 @@ describe('Headquarters API', () => {
     expect(response.body.headquartersId).toBe(hqId);
   });
 
+  // Note: The PUT handler calls HeadquartersValidator without 'new', causing a runtime error.
+  // This test documents the current behavior. Fix the validator to enable successful updates.
   it('should return 500 when updating a headquarters due to validator issue', async () => {
     const newHQ = {
       name: 'Original HQ',
