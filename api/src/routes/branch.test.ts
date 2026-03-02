@@ -117,4 +117,16 @@ describe('Branch API', () => {
     const response = await request(app).get('/branches/999');
     expect(response.status).toBe(404);
   });
+
+  it('should return 404 when updating a non-existing branch', async () => {
+    const response = await request(app).put('/branches/999').send({
+      name: 'Ghost Branch',
+    });
+    expect(response.status).toBe(404);
+  });
+
+  it('should return 404 when deleting a non-existing branch', async () => {
+    const response = await request(app).delete('/branches/999');
+    expect(response.status).toBe(404);
+  });
 });
